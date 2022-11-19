@@ -1,4 +1,9 @@
-﻿# C++ Command Line Calculator
+# C++ Command Line Calculator
+ 
+![image](https://user-images.githubusercontent.com/93007427/202865835-bb67b9d0-19d6-4a1a-b6d9-5965a9ce5992.png)
+
+
+
 
 This is an extremely simple calculator I made while learning C++.
 
