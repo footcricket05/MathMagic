@@ -2,7 +2,7 @@
  
 ![image](https://user-images.githubusercontent.com/93007427/202865835-bb67b9d0-19d6-4a1a-b6d9-5965a9ce5992.png)
 
-It has two modes, regular and scientific, that a user can switch between.
+## It has two modes, regular and scientific, that a user can switch between.
 
 ### Overview
 
