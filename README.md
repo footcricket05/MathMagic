@@ -2,59 +2,46 @@
  
 ![image](https://user-images.githubusercontent.com/93007427/202865835-bb67b9d0-19d6-4a1a-b6d9-5965a9ce5992.png)
 
-## It has two modes, regular and scientific, that a user can switch between.
 
-### Overview
+## Overview
+This is a command-line calculator program written in C++ that allows users to perform basic mathematical operations as well as scientific calculations. The program has two modes, regular and scientific, that the user can switch between.
 
-The program has 2 classes. A simple calculator class called Calculator, and a class that inherits Calculator called Scientific.
 
-Some of the member functions of Calculator are virtual and are overridden in the Scientific class.
+## Features
+1. Two modes of operation: regular and scientific.
 
-The program polymorphically calls the appropriate member functions depending on the current mode (scientific vs simple).
+2. Users can enter a range of inputs that correspond to each operation.
 
-The program flow is:
-1. Prompt user for the desired operation (polymorphically determine the message based on the current mode; show more options while in scientific mode)
-2. Get additional data from the user (if doing addition, get 2 numbers)
-3. Perform calculation, print to screen
-4. Repeat from (1)
+3. A memory feature allows the user to store a number for later use and access it using the keyword `mem`.
 
-#### Calculator Class
+4. The result of a previous calculation is always stored and can be accessed using the keyword `result`.
 
-This is the base class for the calculator program. It has data members and member functions that will display messages to the screen, prompt for user input, and perform calculations.
 
-Specifically, Calculator has 2 protected data members, `result` and `mem`. `result` stores the result of the last computation. `mem` is used by the user to store a number in memory and access it later for further computation. They are both doubles, and they are initialized to 0 in the constructor.
+## Classes
+1. `Calculator`: The base class that performs basic mathematical operations such as addition, subtraction, multiplication, and division. It has data members and member functions that display messages to the screen, prompt for user input, and perform calculations.
 
-Public member functions `add`, `subtract`, `multiply`, `divide`, `square`, and `sqrt` perform all the calculations. They prompt the user for either 1 or 2 numbers depending on the function, perform the required calculation, store this in the protected variable result, and print out the result to the screen.
+2. `Scientific`: A derived class that inherits from the `Calculator` class and performs scientific calculations such as sine, cosine, tangent, logarithm, absolute value, and power. It overrides the `welcome()` and `parseOperation()` functions to add its own options and calculations.
 
-Calculator has 2 public member functions in order to use `mem`, a get and a set.
 
-Then some helper member functions will be needed.
-`welcome()` will print out the available options that can be entered. This is virtual so the derived class can output its own options.
+## Usage
+The program flow is as follows:
 
-`parseOperation()` takes in the user input string and calls the appropriate member function. This is to enable the user entering "+" or "log" and having the correct function called. This is also virtual so it can be overridden for the extra functions in the scientific calc.
+1. The user is prompted for the desired operation.
 
-`parseInput()` is used for the extra `result`/`mem` feature. I wanted the user to be able to type the words result and mem as if they are numbers. `parseInput()` looks for those strings and gets the values from memory to be used in any calculations.
+2. Additional data is requested from the user based on the selected operation.
 
-As this class contains virtual functions, a virtual destructor will be included.
+3. The calculation is performed, and the result is displayed.
 
-#### Scientific Class
+4. The program repeats from step 1.
 
-Scientific inherits from the base class calculator. It calls the Calculator constructor to initialize `result` and `mem`.
-It has many additional operation functions. `sin`, `cos`, `tan`, `ln`, `log`, `abs`, and `pow` all prompt the user for input, perform a calculation, save it in result, and print that result.
+The program polymorphically calls the appropriate member functions depending on the current mode (scientific vs simple). Users can switch between the two modes by entering the keyword `sci`.
 
-It overrides the 2 virtual functions of class Calculator. `welcome()` is overridden to show all the options for the scientific calculator, and `parseOperation()` is overridden to access the additional calculation functions.
 
-A virtual destructor is also included.
+## Nifty Features
+1. Users can enter keywords such as `+`, `add`, `addition`, or `sum` to trigger the addition operation.
 
-#### Main
+2. The program has a memory feature that allows users to store a number in memory and access it later for further computation.
 
-The class set up allows the program to polymorphically call object methods depending on the type of the object. The main program will be one user entry loop. In the loop, a base class Calculator pointer (`calcPtr`) pointed at a Calculator object is used to call the Calculator member functions.
+3. The `result` keyword can be used as a number, allowing users to perform calculations using the result of a previous operation.
 
-The switch to scientific mode will be made by pointing this Calculator class pointer at a derived Scientific class object. Now the program dynamically calls different member functions based on the state.
-
-This simplifies the main code as the statement `calcPtr->welcome()` will automatically call the right welcome function, detailing out the proper options for the current mode.
-
-#### Nifty Features
-
-1. Users are able to enter a range of inputs that correspond to each operation. For example: “+”, “add”, “addition”, “sum” all trigger the addition operation.
-2. This calculator has a memory feature. The result of a previous calculation is always stored and can be accessed using the keyword `result`. This keyword can be used as a number. Thus, the user could enter: `sub` to choose the subtraction operation then type in `result` and `1` to take one away from the previous result. The `mem` keyword allows a user to store a number for later use. This is highly useful when doing long calculations. An important result can be stored into `mem`, then accessed later by using `mem` as an entry in your calculations.
+4. The `mem` keyword allows users to store an important result for later use in their calculations.
