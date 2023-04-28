@@ -45,3 +45,11 @@ The program polymorphically calls the appropriate member functions depending on 
 3. The `result` keyword can be used as a number, allowing users to perform calculations using the result of a previous operation.
 
 4. The `mem` keyword allows users to store an important result for later use in their calculations.
+
+
+## Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have any suggestions or feedback.
+
+
+## License
+This project is licensed under the MIT License. Feel free to use, modify, and distribute the code as you see fit.
